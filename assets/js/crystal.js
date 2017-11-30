@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 	StartGame();
 	
+});
+
 	function StartGame() {
 		RndNumber = PickNumber(19,120);
 		SumNumber = 0;
@@ -38,4 +40,3 @@ $(document).ready(function() {
 	function PickNumber(Low, High) {
 		return Math.floor(Math.random()*(High-Low+1) + Low)
 	};
-})
