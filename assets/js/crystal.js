@@ -1,29 +1,27 @@
 $(document).ready(function() {
-	var RndNumber = 0;
-	var SumNumber = 0;
-	var Wins = 0;
-	var Losses = 0;
+	var gRnd = 0;
+	var gSum = 0;
+	var gWins = 0;
+	var gLosses = 0;
 
 	$(".crystalPic").on("click", function() {
-		SumNumber += parseInt($(this).attr("val"));
+		gSum += parseInt($(this).attr("val"));
 	    UpdateDisplay();
-		if (SumNumber < RndNumber) {
+		if (gSum < gRnd) {
 			return;
-		} else if (SumNumber > RndNumber) {
-			Losses++;
+		} else if (gSum > gRnd) {
+			gLosses++;
 		} else {
-			Wins++;
+			gWins++;
 		}
 		StartGame();
 	});
 
 	StartGame();
 	
-});
-
 	function StartGame() {
-		RndNumber = PickNumber(19,120);
-		SumNumber = 0;
+		gRnd = PickNumber(19,120);
+		gSum = 0;
 		$(".crystalPic").each(function(){
 	        $(this).attr("val",PickNumber(1,12));
 	    });
@@ -31,12 +29,13 @@ $(document).ready(function() {
 	};
 
 	function UpdateDisplay() {
-		$("#RndNumber").text("Add up to this Number: " + RndNumber.toString());
-		$("#SumNumber").text("Your Total so Far: " + SumNumber.toString());
-		$("#Wins").text("Wins: " + Wins.toString());
-		$("#Losses").text("Losses: " + Losses.toString());
+		$("#RndNumber").text("Add up to this Number: " + gRnd.toString());
+		$("#SumNumber").text("Your Total so Far: " + gSum.toString());
+		$("#Wins").text("Wins: " + gWins.toString());
+		$("#Losses").text("Losses: " + gLosses.toString());
 	}
 
 	function PickNumber(Low, High) {
 		return Math.floor(Math.random()*(High-Low+1) + Low)
 	};
+});
